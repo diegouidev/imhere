@@ -49,6 +49,11 @@ export function Home(){
             />
         )}
         showsVerticalScrollIndicator={false}
+        ListEmptyComponent={() => (
+          <Text style={styles.listEmptyText}>
+            Ninguém chegou no evento ainda? Adicione participantes a sua lista de presença.
+          </Text>
+        )}
       />
 
     </View>
