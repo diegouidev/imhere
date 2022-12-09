@@ -1,6 +1,8 @@
 import { Text, View, TextInput, TouchableOpacity, FlatList } from "react-native"
 import { styles } from './styles'
 
+import Add from '../../../assets/Add.svg'
+
 import { Participant } from "../../components/Participant"
 
 
@@ -11,7 +13,7 @@ export function Home(){
     console.log(`você clicou no botao de adicionar!`)
   }
 
-  function handleParticipantRemove(name: string){
+  function handleParticipantRemove(){
     console.log(`você clicou no botao de remover o participante ${name} `)
   }
 
@@ -33,9 +35,7 @@ export function Home(){
         />
 
         <TouchableOpacity style={styles.button} onPress={handleParticipantAdd}>
-          <Text style={styles.buttonText}>
-            +
-          </Text>
+          <Add width={20} height={20} />
         </TouchableOpacity>
       </View>
       <FlatList
@@ -45,7 +45,7 @@ export function Home(){
           <Participant
               key={item}
               name={item}
-              onRemove={() => handleParticipantRemove('Diego')}
+              onRemove={handleParticipantRemove}
             />
         )}
         showsVerticalScrollIndicator={false}

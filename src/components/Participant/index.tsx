@@ -1,5 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 
+import Remove from '../../../assets/Remove.svg'
 import { styles } from "./styles";
 
 type Props = {
@@ -15,9 +16,7 @@ export function Participant({ name, onRemove }: Props){
         {name}
       </Text>
       <TouchableOpacity style={styles.button} onPress={onRemove}> 
-          <Text style={styles.buttonText}>
-            -
-          </Text>
+          <Remove width={20} height={20} />
         </TouchableOpacity>
     </View>
   )
