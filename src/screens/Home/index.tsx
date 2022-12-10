@@ -1,4 +1,4 @@
-import { Text, View, TextInput, TouchableOpacity, FlatList } from "react-native"
+import { Text, View, TextInput, TouchableOpacity, FlatList, Alert } from "react-native"
 import { styles } from './styles'
 
 import Add from '../../../assets/Add.svg'
@@ -10,11 +10,24 @@ export function Home(){
   const participants = ['Diego', 'Jamile', 'Zé Maria', 'Raissa', 'Naldim', 'Karine', 'Dinaldo', 'Natalia', 'Tia Toto', 'Elisangela']
 
   function handleParticipantAdd(){
-    console.log(`você clicou no botao de adicionar!`)
+    // verificando se o participante já existe e mostrando o alerta
+    if(participants.includes('Diego')){
+      return Alert.alert('Participante existe', 'Já existe um participante na lista com esse nome.')
+    }
   }
 
-  function handleParticipantRemove(){
-    console.log(`você clicou no botao de remover o participante ${name} `)
+  function handleParticipantRemove(name: string){
+    // mostrando o alerta e a confirmação de remoção
+    Alert.alert('Remover', `Remover o participante ${name}?`, [
+      {
+        text: 'Sim',
+        onPress: () => Alert.alert("Deletado!")
+      },
+      {
+        text: 'Não',
+        style: 'cancel'
+      }
+    ])
   }
 
   return(
@@ -34,7 +47,10 @@ export function Home(){
           placeholderTextColor="#6b6b6b"
         />
 
-        <TouchableOpacity style={styles.button} onPress={handleParticipantAdd}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={handleParticipantAdd}
+        >
           <Add width={20} height={20} />
         </TouchableOpacity>
       </View>
@@ -45,7 +61,7 @@ export function Home(){
           <Participant
               key={item}
               name={item}
-              onRemove={handleParticipantRemove}
+              onRemove={() => handleParticipantRemove(item)}
             />
         )}
         showsVerticalScrollIndicator={false}
