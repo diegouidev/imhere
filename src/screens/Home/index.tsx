@@ -25,7 +25,7 @@ export function Home(){
     Alert.alert('Remover', `Remover o participante ${name}?`, [
       {
         text: 'Sim',
-        onPress: () => Alert.alert("Deletado!")
+        onPress: () => setParticipants(prevState => prevState.filter(participant => participant !== name))
       },
       {
         text: 'Não',
@@ -37,11 +37,11 @@ export function Home(){
   return(
     <View style={styles.container}>
       <Text style={styles.eventName}>
-        Churras no Deck
+        Churras do Natal
       </Text>
 
       <Text style={styles.eventDate}>
-        Sábado, 10 de dezembro de 2022.
+        Sábado, 24 de dezembro de 2022.
       </Text>
 
       <View style={styles.form}>
