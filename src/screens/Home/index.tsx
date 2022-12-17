@@ -6,7 +6,6 @@ import Add from '../../../assets/Add.svg'
 
 import { Participant } from "../../components/Participant"
 
-
 export function Home(){
   const [participants, setParticipants] = useState<string[]>([])
   const [participantName, setParticipantName] = useState('')
@@ -65,10 +64,10 @@ export function Home(){
         keyExtractor={item => item}
         renderItem={({ item }) => (
           <Participant
-              key={item}
-              name={item}
-              onRemove={() => handleParticipantRemove(item)}
-            />
+            key={item}
+            name={item}
+            onRemove={() => handleParticipantRemove(item)}
+          />
         )}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => (
