@@ -60,6 +60,7 @@ export function Home(){
         </TouchableOpacity>
       </View>
       <FlatList
+      
         data={participants}
         keyExtractor={item => item}
         renderItem={({ item }) => (
